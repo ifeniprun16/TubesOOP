@@ -73,18 +73,23 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 255));
         jLabel4.setText("NIM");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 255));
         jLabel5.setText("Jurusan");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 255));
         jLabel6.setText("E-mail");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 255));
         jLabel7.setText("Password");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 255));
         jLabel8.setText("Confirm Password");
 
@@ -96,10 +101,12 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 102, 255));
         jLabel9.setText("Name");
 
         jLabel10.setBackground(new java.awt.Color(102, 102, 255));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(102, 102, 255));
         jLabel10.setText("NIA");
 
