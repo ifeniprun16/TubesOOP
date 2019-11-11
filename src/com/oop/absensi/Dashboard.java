@@ -34,6 +34,7 @@ String tempNIM;
                 lNama.setText("Hi, "+res.getString(1));
             }
         } catch (Exception e) {
+            System.out.println("Error"+e);
         }
         
     }
@@ -53,12 +54,12 @@ String tempNIM;
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lNama = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        absenpiket = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lihatabsenpiket = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        eventmendatang = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,20 +92,25 @@ String tempNIM;
         lNama.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         lNama.setText("Hi, Nama");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-in (1).png"))); // NOI18N
+        absenpiket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-in (1).png"))); // NOI18N
+        absenpiket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                absenpiketMouseClicked(evt);
+            }
+        });
 
         jLabel4.setText("Absen Piket");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-out (1).png"))); // NOI18N
         jLabel5.setText("Logout");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/calendar.png"))); // NOI18N
-        jLabel6.setText("jLabel6");
+        lihatabsenpiket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/calendar.png"))); // NOI18N
+        lihatabsenpiket.setText("jLabel6");
 
         jLabel7.setText("Lihat Absen Piket");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/eventsoon.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
+        eventmendatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/eventsoon.png"))); // NOI18N
+        eventmendatang.setText("jLabel8");
 
         jLabel9.setText("Event Mendatang");
 
@@ -124,11 +130,11 @@ String tempNIM;
                         .addComponent(jLabel9)
                         .addGap(66, 66, 66))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(absenpiket)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lihatabsenpiket, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(95, 95, 95)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eventmendatang, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -148,9 +154,9 @@ String tempNIM;
                 .addGap(78, 78, 78)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lihatabsenpiket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(eventmendatang))
+                    .addComponent(absenpiket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -175,6 +181,11 @@ String tempNIM;
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void absenpiketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_absenpiketMouseClicked
+        // TODO add your handling code here:
+        new AbsenPiket(tempNIM).setVisible(true);
+    }//GEN-LAST:event_absenpiketMouseClicked
 
     /**
      * @param args the command line arguments
@@ -216,16 +227,16 @@ String tempNIM;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel absenpiket;
+    private javax.swing.JLabel eventmendatang;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lNama;
+    private javax.swing.JLabel lihatabsenpiket;
     // End of variables declaration//GEN-END:variables
 }

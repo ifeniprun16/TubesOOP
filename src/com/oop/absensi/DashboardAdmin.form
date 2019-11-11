@@ -46,7 +46,7 @@
               <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="94" max="-2" attributes="0"/>
+                  <Component id="lNama" min="-2" pref="94" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -55,11 +55,11 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="absenpiket" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="99" max="32767" attributes="0"/>
-                          <Component id="jLabel6" min="-2" pref="62" max="-2" attributes="0"/>
+                          <Component id="lihatabsenpiket" min="-2" pref="62" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                          <Component id="rekapabsenpiket" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -67,7 +67,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel15" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="absenevent" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -79,7 +79,7 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" min="-2" pref="62" max="-2" attributes="0"/>
+                                  <Component id="lihatabsenevent" min="-2" pref="62" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -87,7 +87,7 @@
                               <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel8" min="-2" pref="69" max="-2" attributes="0"/>
+                                  <Component id="eventmendatang" min="-2" pref="69" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -103,16 +103,16 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lNama" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" max="32767" attributes="0"/>
+                          <Component id="lihatabsenpiket" min="-2" max="-2" attributes="0"/>
+                          <Component id="absenpiket" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                      <Component id="rekapabsenpiket" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -122,9 +122,9 @@
                   </Group>
                   <EmptySpace pref="103" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="eventmendatang" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lihatabsenevent" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="absenevent" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -181,7 +181,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lNama">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="18" style="0"/>
@@ -189,12 +189,15 @@
             <Property name="text" type="java.lang.String" value="Hi, Nama"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="absenpiket">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/oop/absensi/assets/log-in (1).png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="absenpiketMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -209,7 +212,7 @@
             <Property name="text" type="java.lang.String" value="Logout"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="lihatabsenpiket">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/oop/absensi/assets/calendar.png"/>
@@ -222,7 +225,7 @@
             <Property name="text" type="java.lang.String" value="Lihat Absen Piket"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="eventmendatang">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/oop/absensi/assets/eventsoon.png"/>
@@ -250,7 +253,7 @@
             <Property name="text" type="java.lang.String" value="Lihat Absen Event"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel13">
+        <Component class="javax.swing.JLabel" name="lihatabsenevent">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/oop/absensi/assets/calendar.png"/>
@@ -258,14 +261,14 @@
             <Property name="text" type="java.lang.String" value="jLabel6"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel14">
+        <Component class="javax.swing.JLabel" name="rekapabsenpiket">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/oop/absensi/assets/folder.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel15">
+        <Component class="javax.swing.JLabel" name="absenevent">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/com/oop/absensi/assets/log-in (1).png"/>

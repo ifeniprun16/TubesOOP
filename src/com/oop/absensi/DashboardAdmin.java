@@ -5,6 +5,8 @@
  */
 package com.oop.absensi;
 
+import com.mysql.jdbc.Connection;
+
 /**
  *
  * @author ifenf
@@ -14,12 +16,26 @@ String tempNIM;
     /**
      * Creates new form Dashboard
      */
-    public DashboardAdmin() {
+    public DashboardAdmin(String nim) {
         initComponents();
-    }
-    public DashboardAdmin(String nim){
         this.tempNIM = nim;
+        load();
     }
+    public void load(){
+        try {
+             String sql = "SELECT nama FROM akun WHERE nim='" + tempNIM + "'";
+            java.sql.Connection conn = (Connection) config.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while(res.next()){
+                lNama.setText("Hi, "+res.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+ e);
+        }
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,20 +49,20 @@ String tempNIM;
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lNama = new javax.swing.JLabel();
+        absenpiket = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lihatabsenpiket = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        eventmendatang = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lihatabsenevent = new javax.swing.JLabel();
+        rekapabsenpiket = new javax.swing.JLabel();
+        absenevent = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,23 +91,28 @@ String tempNIM;
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel2.setText("Hi, Nama");
+        lNama.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        lNama.setText("Hi, Nama");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-in (1).png"))); // NOI18N
+        absenpiket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-in (1).png"))); // NOI18N
+        absenpiket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                absenpiketMouseClicked(evt);
+            }
+        });
 
         jLabel4.setText("Absen Piket");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-out (1).png"))); // NOI18N
         jLabel5.setText("Logout");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/calendar.png"))); // NOI18N
-        jLabel6.setText("jLabel6");
+        lihatabsenpiket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/calendar.png"))); // NOI18N
+        lihatabsenpiket.setText("jLabel6");
 
         jLabel7.setText("Lihat Absen Piket");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/eventsoon.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
+        eventmendatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/eventsoon.png"))); // NOI18N
+        eventmendatang.setText("jLabel8");
 
         jLabel9.setText("Event Mendatang");
 
@@ -101,13 +122,13 @@ String tempNIM;
 
         jLabel12.setText("Lihat Absen Event");
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/calendar.png"))); // NOI18N
-        jLabel13.setText("jLabel6");
+        lihatabsenevent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/calendar.png"))); // NOI18N
+        lihatabsenevent.setText("jLabel6");
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/folder.png"))); // NOI18N
+        rekapabsenpiket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/folder.png"))); // NOI18N
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-in (1).png"))); // NOI18N
-        jLabel15.setText("jLabel15");
+        absenevent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/oop/absensi/assets/log-in (1).png"))); // NOI18N
+        absenevent.setText("jLabel15");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,7 +137,7 @@ String tempNIM;
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lNama, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
@@ -124,18 +145,18 @@ String tempNIM;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addComponent(jLabel3)
+                        .addComponent(absenpiket)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lihatabsenpiket, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(108, 108, 108)
-                        .addComponent(jLabel14)
+                        .addComponent(rekapabsenpiket)
                         .addGap(13, 13, 13))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(absenevent, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(81, 81, 81)
@@ -144,13 +165,13 @@ String tempNIM;
                                     .addComponent(jLabel7)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(98, 98, 98)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lihatabsenevent, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(eventmendatang, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(11, 11, 11)))))
                 .addGap(54, 54, 54))
         );
@@ -160,14 +181,14 @@ String tempNIM;
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(lNama)
                     .addComponent(jLabel5))
                 .addGap(78, 78, 78)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel14))
+                        .addComponent(lihatabsenpiket)
+                        .addComponent(absenpiket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(rekapabsenpiket))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -175,9 +196,9 @@ String tempNIM;
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel15))
+                    .addComponent(eventmendatang)
+                    .addComponent(lihatabsenevent)
+                    .addComponent(absenevent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -201,6 +222,11 @@ String tempNIM;
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void absenpiketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_absenpiketMouseClicked
+        // TODO add your handling code here:
+        new AbsenPiket(tempNIM).setVisible(true);
+    }//GEN-LAST:event_absenpiketMouseClicked
 
     /**
      * @param args the command line arguments
@@ -233,28 +259,28 @@ String tempNIM;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardAdmin().setVisible(true);
+//                new DashboardAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel absenevent;
+    private javax.swing.JLabel absenpiket;
+    private javax.swing.JLabel eventmendatang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lNama;
+    private javax.swing.JLabel lihatabsenevent;
+    private javax.swing.JLabel lihatabsenpiket;
+    private javax.swing.JLabel rekapabsenpiket;
     // End of variables declaration//GEN-END:variables
 }

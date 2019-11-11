@@ -5,17 +5,50 @@
  */
 package com.oop.absensi;
 
+import com.mysql.jdbc.Connection;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class AbsenPiket extends javax.swing.JFrame {
-
+String tempNIM;
+int mingguke = 1;
+String pekan="Minggu"+mingguke;
     /**
      * Creates new form AbsenPiket
      */
-    public AbsenPiket() {
+    public AbsenPiket(String nim) {
         initComponents();
+        this.tempNIM = nim;
+        load();
+        
+    }
+    public void load(){
+        try {
+            String sql = "SELECT nama FROM absenpiket WHERE nim='" + tempNIM + "'";
+            java.sql.Connection conn = (Connection) config.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while(res.next()){
+                lNim.setText(tempNIM);
+                lNama.setText(res.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Error "+e);
+        }
+        
+    }
+    public void absen(){
+        try {
+            String sql = "UPDATE absenpiket SET "+pekan+"='Hadir' WHERE nim='" + tempNIM + "'";
+            java.sql.Connection conn = (Connection) config.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            stm.execute(sql);
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+        }
     }
 
     /**
@@ -30,31 +63,24 @@ public class AbsenPiket extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lNim = new javax.swing.JLabel();
+        lNama = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lMinggu = new javax.swing.JLabel();
 
         jLabel3.setText("NAMA");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("NIM");
+        lNim.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lNim.setForeground(new java.awt.Color(255, 255, 255));
+        lNim.setText("NIM");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("NAMA");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 2", "Minggu 3", "Minggu 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
+        lNama.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lNama.setForeground(new java.awt.Color(255, 255, 255));
+        lNama.setText("NAMA");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("ABSEN");
@@ -64,36 +90,40 @@ public class AbsenPiket extends javax.swing.JFrame {
             }
         });
 
+        lMinggu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lMinggu.setForeground(new java.awt.Color(255, 255, 255));
+        lMinggu.setText("Minggu ke-1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(183, 183, 183))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(147, 147, 147))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(172, 172, 172))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lNama)
+                            .addComponent(lNim))
+                        .addGap(183, 183, 183))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(lMinggu)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel1)
-                .addGap(51, 51, 51)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(67, 67, 67)
+                .addComponent(lNim)
+                .addGap(54, 54, 54)
+                .addComponent(lNama)
+                .addGap(45, 45, 45)
+                .addComponent(lMinggu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
@@ -106,21 +136,30 @@ public class AbsenPiket extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try {
+            String sql = "SELECT "+pekan+" FROM absenpiket WHERE nim='" + tempNIM + "'";
+            java.sql.Connection conn = (Connection) config.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while(res.next()){
+                if(!res.getString(1).equalsIgnoreCase("Hadir")){
+                    absen();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Kamu sudah absen minggu ini");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -153,18 +192,18 @@ public class AbsenPiket extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AbsenPiket().setVisible(true);
+//                new AbsenPiket().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel lMinggu;
+    private javax.swing.JLabel lNama;
+    private javax.swing.JLabel lNim;
     // End of variables declaration//GEN-END:variables
 }

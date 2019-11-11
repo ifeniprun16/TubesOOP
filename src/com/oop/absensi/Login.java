@@ -197,9 +197,9 @@ public class Login extends javax.swing.JFrame {
                 if (res.getString(1).equals(getMd5(jPassword.getText()))) {
                     JOptionPane.showMessageDialog(null, "Haloo, " + res.getString(2));
                     this.setVisible(false);
-                    new temp().setLogin(jNim.getText());
+//                    new temp().setLogin(jNim.getText());
                     if (res.getString(3).equals("admin")) {
-                        new DashboardAdmin().setVisible(true);
+                        new DashboardAdmin(jNim.getText()).setVisible(true);
                     } else {
                         new Dashboard(jNim.getText()).setVisible(true);
                     }

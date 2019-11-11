@@ -242,6 +242,8 @@ public class SignUp extends javax.swing.JFrame {
                 java.sql.Connection conn = (Connection) config.configDB();
                 java.sql.Statement stm = conn.createStatement();
                 stm.execute(sql);
+                this.dispose();
+                new Login().setVisible(true);
             } catch (Exception e) {
                 System.out.println("Error"+e);
             }
