@@ -55,6 +55,11 @@ public class Welcome extends javax.swing.JFrame {
         buttonLogin.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         buttonLogin.setForeground(new java.awt.Color(255, 255, 255));
         buttonLogin.setText("Login");
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         buttonDaftar.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         buttonDaftar.setText("Signup");
@@ -137,7 +142,15 @@ public class Welcome extends javax.swing.JFrame {
 
     private void buttonDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDaftarActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new SignUp().setVisible(true);
     }//GEN-LAST:event_buttonDaftarActionPerformed
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
      * @param args the command line arguments
