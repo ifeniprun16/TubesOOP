@@ -44,7 +44,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setText("NIA");
+        jLabel4.setText("NM");
 
         jLabel5.setText("Password");
 

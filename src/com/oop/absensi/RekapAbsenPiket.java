@@ -70,7 +70,7 @@ public class RekapAbsenPiket extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nama", "NIA", "Hadir", "Denda"
+                "Nama", "NIM", "Hadir", "Denda"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
