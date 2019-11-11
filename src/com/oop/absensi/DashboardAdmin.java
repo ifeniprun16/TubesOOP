@@ -10,12 +10,15 @@ package com.oop.absensi;
  * @author ifenf
  */
 public class DashboardAdmin extends javax.swing.JFrame {
-
+String tempNIM;
     /**
      * Creates new form Dashboard
      */
     public DashboardAdmin() {
         initComponents();
+    }
+    public DashboardAdmin(String nim){
+        this.tempNIM = nim;
     }
 
     /**
@@ -176,10 +179,11 @@ public class DashboardAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel12))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel12)))
                 .addGap(26, 26, 26))
         );
 
