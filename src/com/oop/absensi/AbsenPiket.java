@@ -47,7 +47,7 @@ String pekan="Minggu"+mingguke;
             java.sql.Statement stm = conn.createStatement();
             stm.execute(sql);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println("Error"+e);
         }
     }
 
@@ -151,9 +151,8 @@ String pekan="Minggu"+mingguke;
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
             while(res.next()){
-                if(res.getString(1)==null){
+                if(!res.getString(1).equalsIgnoreCase("Hadir")){
                     absen();
-                    JOptionPane.showMessageDialog(null, "Okey, Berhasil!");
                 }else{
                     JOptionPane.showMessageDialog(null, "Kamu sudah absen minggu ini");
                 }
