@@ -69,7 +69,7 @@ public class LihatAbsenPiket extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Minggu 1", "Minggu 2", "Minggu 3", "Minggu 4"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
