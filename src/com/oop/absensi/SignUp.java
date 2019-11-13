@@ -239,9 +239,13 @@ public class SignUp extends javax.swing.JFrame {
         if (jPassword.getText().equals(jConfirmPassword.getText())) {
             try {
                 String sql = "INSERT INTO akun (nama, nim, divisi, jurusan, email, password, role) VALUES ('" + jNama.getText() + "', " + jNim.getText() + ",'" + (jDivisi.getSelectedItem()).toString() + "','" + jJurusan.getText() + "','" + jEmail.getText() + "', '" + getMd5(jPassword.getText()) + "','user')";
+                String sql2 = "INSERT INTO absenpiket(nama, nim) VALUES ('" + jNama.getText() + "', " + jNim.getText() + ")";
                 java.sql.Connection conn = (Connection) config.configDB();
                 java.sql.Statement stm = conn.createStatement();
+                java.sql.Statement stm2 = conn.createStatement();
                 stm.execute(sql);
+                stm2.execute(sql2);
+                JOptionPane.showMessageDialog(null, "Mantap!! Akun  berhasil dibuat!");
                 this.dispose();
                 new Login().setVisible(true);
             } catch (Exception e) {
